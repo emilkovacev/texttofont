@@ -16,7 +16,6 @@ def word_to_ascii(word):
 
     retval = ""
     for row in range(height):
-        row_str = ""
         for letter in word:
             width = font.getsize(letter)[0]
             height = font.getsize(letter)[1]
@@ -27,15 +26,17 @@ def word_to_ascii(word):
                 bitmap.append(mask[r*width:r*width + width])
 
             row_bitmap = bitmap[row]
+            if len(row_bitmap) == 0:
+                retval += width * ' '
             for pixel in row_bitmap:
                 if pixel < 100:
                     retval += ' '
                 else:
-                    retval += '1'
+                    retval += str(letter)
             retval += '   '
         retval = retval.rstrip()
         retval += '\n'
     return retval.rstrip()
 
 
-print(word_to_ascii('abcdef'))
+print(word_to_ascii('<3'))
