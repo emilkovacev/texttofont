@@ -1,4 +1,3 @@
-import generate_ascii_template
 from PIL import ImageFont
 
 
@@ -10,20 +9,18 @@ def letter_to_ascii(letter):
     return retval
 
 
-def word_to_ascii(word):
-    font = ImageFont.truetype('SF-Archery-Black/SF_Archery_Black.ttf', 12)
+def word_to_ascii(phrase, font, font_size, kerning):
+    font = ImageFont.truetype(font, font_size)
     height = font.getsize('a')[1]
 
     retval = ""
     for row in range(height):
-        for letter in word:
+        for letter in phrase:
             width = font.getsize(letter)[0]
             height = font.getsize(letter)[1]
             mask = [x for x in font.getmask(letter)]
 
-            bitmap = []
-            for r in range(height):
-                bitmap.append(mask[r*width:r*width + width])
+            bitmap = [mask[r*width:r*width + width] for r in range(height)]
 
             row_bitmap = bitmap[row]
             if len(row_bitmap) == 0:
@@ -33,10 +30,16 @@ def word_to_ascii(word):
                     retval += ' '
                 else:
                     retval += str(letter)
-            retval += '   '
+            retval += kerning * ' '
         retval = retval.rstrip()
         retval += '\n'
     return retval.rstrip()
 
 
-print(word_to_ascii('<3'))
+if __name__ == '__main__':
+    print(word_to_ascii(
+        phrase='hey there!', 
+        font='slkscr.ttf', 
+        font_size=12,
+        kerning=5,
+    ))

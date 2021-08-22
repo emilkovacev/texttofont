@@ -1,7 +1,9 @@
 # texttofont
-Take a .ttf file and generate ascii art using the font for text. Use any symbols for generating the font + fun mode where each character is built up of itself in ascii art (coming soon)
+Take a .ttf file and generate ascii art using the font for text. Use any symbols for generating the font + fun mode where each character is built up of itself in ascii art
+
 ## Instructions
-`git clone` the repo, and call general functionality from `tta.py`
+Run `pip install --upgrade Pillow` (And uninstall any local version of PIL)
+
 ## Functionality
 ### tta.py
 * convert sentences to ascii art from fonts
