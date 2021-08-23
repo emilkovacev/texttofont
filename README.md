@@ -1,5 +1,5 @@
 # text-to-font
-[https://pypi.org/project/text-to-font/](pypi.org/project/text-to-font)
+https://pypi.org/project/text-to-font/
 
 Take a .ttf file and generate ascii art using the font for text. Use any symbols for generating the font + fun mode where each character is built up of itself in ascii art
 
